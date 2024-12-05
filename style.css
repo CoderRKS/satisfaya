@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    margin: 0rem;
+    overflow: hidden;
+    font-family: "Ubuntu", sans-serif;
+    perspective: 1000px;
+    cursor:crosshair;
+}
+
+#image-track {
+    display: flex;
+    gap: 4vmin;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(0%, -50%);
+    user-select: none;
+}
+
+.image-container {
+    position: relative; /* Positioning the container relative to position the overlay inside it */
+    width: 50vmin;
+    height: 80vmin;
+}
+
+#image-track>.image-container>.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    object-position: 100% center;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Hover effect for the image */
+#image-track>.image-container:hover .image {
+    transform: scale(1.1) translateY(-10px) rotateX(5deg);
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Styling for the gradient text box */
+.details {
+    position: absolute;
+    bottom: -2%;
+    left: 0;
+    width: 90%;
+    padding: 100px 0px 10px 50px;
+    padding-left: 20px;
+    font-weight: 600;
+    font-size: 25px;
+    color: white;
+    background: linear-gradient(22deg, rgb(0, 0, 0),  rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0));
+    opacity: 0; /* Initially invisible */
+    transition: opacity 0.7s ease, scale 0.3s ease; /* Smooth transition */
+}
+
+/* Show the gradient box when hovering over the image-container */
+.image-container:hover .details {
+    opacity: 1;
+    scale: 1.105;
+}
+
+.image-container > .details > p{
+    font-size: 15px;
+    font-weight: 100;
+}
